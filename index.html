@@ -10,7 +10,7 @@
     <header id="header">
         <h1 id="title">Take the quiz of death!</h1>
     </header>
-    <button id="startButton" onclick="startFunction()">Click Start!</button>
+    <button id="startButton" onclick="startCountdown()">Click Start!</button>
     <section id="quiz-questions">
         <div id="question1" class="questions" style="display: none">
             <h3>Question 1: What does JS stand for?</h3>
@@ -101,20 +101,19 @@
             <ul class="choices">
                 <li>
                     <label>
-                        <input type="button" name="question4" value="A" /><span>Blah</span>
+                        <input type="button" onclick="finalQuestion()" name="question4" value="A" /><span>Blah</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" name="question4" value="B" /><span>Blah</span>
+                        <input type="button" onclick="finalQuestion()" name="question4" value="B" /><span>Blah</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" name="question4" value="C" /><span>Blah</span>
+                        <input type="button" onclick="finalQuestion()" name="question4" value="C" /><span>Blah</span>
                     </label>
                 </li>
-
             </ul>
         </div>
     </section>
