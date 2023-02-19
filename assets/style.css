@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+
+#header {
+    display: flex;
+    text-align: center;
+    max-width: 100%;
+}
+
+#title {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    max-width: 100%;
+    min-width: 100%;
+    justify-content: center;
+}
+
+#scores {
+    display: flex;
+    flex-direction: column;
+}
+
+#quizQuestions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

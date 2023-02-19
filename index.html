@@ -4,121 +4,125 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./assets/style.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body class="page" style="background-color:black; color:white;">
     <header id="header">
         <h1 id="title">Take the quiz of death!</h1>
     </header>
-    <button id="startButton" onclick="startCountdown()">Click Start!</button>
-    <section id="quiz-questions">
+    <button id="startButton" onclick="startFunction()">Click Start!</button>
+    <section id="quizQuestions" class="container" >
         <div id="question1" class="questions" style="display: none">
             <h3>Question 1: What does JS stand for?</h3>
-            <ul class="choices">
+            <ul class="choices" id="questionOneAnswers">
                 <li>
                     <label>
-                        <input type="button" onclick="questionTwo()" name="question1" value="A" /><span>Justin Simberlake</span>
+                        <input type="button" onclick="evaluateQuestionOne(1)" id="q1opt1" value="1" /><span>Justin Simberlake</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" onclick="questionTwo()" name="question1" value="B" /><span>JavaScript</span>
+                        <input type="button" onclick="evaluateQuestionOne(2)" id="q1opt2" value="2" /><span>JavaScript</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" onclick="questionTwo()" name="question1" value="C" /><span>JarJar Stinks</span>
+                        <input type="button" onclick="evaluateQuestionOne(3)" id="q1opt3" value="3" /><span>JarJar Stinks</span>
                     </label>
                 </li>
 
             </ul>
         </div>
         <div id="question2" class="questions" style="display: none">
-            <h3>Question 2: What does JS stand for?</h3>
+            <h3>Question 2: What tag do you use to reference your .js file?</h3>
             <ul class="choices">
                 <li>
                     <label>
-                        <input type="button" onclick="questionThree()" name="question2" value="A" class="answerBtn" /><span>Answer</span>
+                        <input type="button" onclick="evaluateQuestionTwo(1)" id="q2opt1" value="1" class="answerBtn" /><span>Div</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" onclick="questionThree()" name="question2" value="B" class="answerBtn" /><span>Another answer</span>
+                        <input type="button" onclick="evaluateQuestionTwo(2)" id="q2opt2" value="2" class="answerBtn" /><span>Span</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" onclick="questionThree()" name="question2" value="C" class="answerBtn" /><span>A final answer</span>
+                        <input type="button" onclick="evaluateQuestionTwo(3)" id="q2opt3" value="3" class="answerBtn" /><span>Script</span>
                     </label>
                 </li>
 
             </ul>
         </div>
         <div id="question3" class="questions" style="display: none">
-            <h3>Question 3: What does JS stand for?</h3>
+            <h3>Question 3: What is NaN when referencing Javascript</h3>
             <ul class="choices">
                 <li>
                     <label>
-                        <input type="button" onclick="questionFour()" name="question3" value="A" /><span>Yadda</span>
+                        <input type="button" onclick="evaluateQuestionThree(1)" name="question3" value="A" /><span>A value that is not defined</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" onclick="questionFour()" name="question3" value="B" /><span>Yadda</span>
+                        <input type="button" onclick="evaluateQuestionThree(2)" name="question3" value="B" /><span>A value that is not a number</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" onclick="questionFour()" name="question3" value="C" /><span>Yadda</span>
+                        <input type="button" onclick="evaluateQuestionThree(3)" name="question3" value="C" /><span>A value that is not accessible</span>
                     </label>
                 </li>
 
             </ul>
         </div>
         <div id="question4" class="questions" style="display: none">
-            <h3>Question 4: What does JS stand for?</h3>
+            <h3>Question 4: The "function" and "var" are known as</h3>
             <ul class="choices">
                 <li>
                     <label>
-                        <input type="button" onclick="questionFive()" name="question4" value="A" /><span>Justin Simberlake</span>
+                        <input type="button" onclick="evaluateQuestionFour(1)" name="question4" value="A" /><span>Declaration statments</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" onclick="questionFive()" name="question4" value="B" /><span>JavaScript</span>
+                        <input type="button" onclick="evaluateQuestionFour(2)" name="question4" value="B" /><span>Data types</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" onclick="questionFive()" name="question4" value="C" /><span>JarJar Stinks</span>
+                        <input type="button" onclick="evaluateQuestionFour(3)" name="question4" value="C" /><span>Keywords</span>
                     </label>
                 </li>
 
             </ul>
         </div>
         <div id="question5" class="questions" style="display: none">
-            <h3>Question 5: What does JS stand for?</h3>
+            <h3>Question 5: Which of the following function of the String object returns the character in the string starting at the specified position via the specified number of characters?</h3>
             <ul class="choices">
                 <li>
                     <label>
-                        <input type="button" onclick="finalQuestion()" name="question4" value="A" /><span>Blah</span>
+                        <input type="button" onclick="evaluateQuestionFive(1)" name="question4" value="A" /><span>slice()</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" onclick="finalQuestion()" name="question4" value="B" /><span>Blah</span>
+                        <input type="button" onclick="evaluateQuestionFive(2)" name="question4" value="B" /><span>search()</span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="button" onclick="finalQuestion()" name="question4" value="C" /><span>Blah</span>
+                        <input type="button" onclick="evaluateQuestionFive(3)" name="question4" value="C" /><span>substr()</span>
                     </label>
                 </li>
             </ul>
         </div>
     </section>
-    <section id="timer" style="display: none">Timer</section>
-    <section id="score" style="display: none">High Score</section>
+    <section id="timer" style="display: none"></section>
+    <section id="score" style="display: none">
+        <h3>High Scores</h3>
+        <ul id="scores"></ul>    
+    </section>
 <script src="./assets/script.js"></script>    
 </body>
 </html>

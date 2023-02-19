@@ -1,91 +1,70 @@
-// const quizQuestions = document.getElementById("quiz-questions");
 
-// var countdown = 30;
-// var expired = setInterval(function () {
-//     var timer = document.getElementById("timer").innerHTML = countdown;
-//     timer--;
-//     var showScore = document.getElementById("score");
-//     if (countdown == 0) {
-//         question1.style.display = "none";
-//         question2.style.display = "none";
-//         question3.style.display = "none";
-//         question4.style.display = "none";
-//         question5.style.display = "none";
-//         showScore.style.display = "block";
-//         timer.innerHTML = "expired!";
-//     } else {
-//         if (countdown < 10) {
-//             countdown = 0 + '' + countdown;
-//         }
-//         countdown -= 1;
-//     }
+// declare global variables to be used in multiple functions
+var finalQuestionAnswered = false;
+var countdown = 0;
+var correctAnswers = 0;
+var scoreResults = document.getElementById("score");
 
-// }, 1000);
-
-var question1 = document.getElementById("question1");
-var question2 = document.getElementById("question2");
-var question3 = document.getElementById("question3");
-var question4 = document.getElementById("question4");
-var question5 = document.getElementById("question5");
-var countdown;
-var startButton = document.getElementById("startButton");
-var stopButton = document.getElementById("")
-var timer = document.getElementById("timer");
-startButton.addEventListener("click", startCountdown);
-// stopButton.addEventListener("click", function() {
-//     clearInterval(countdown);
-// });
-
-function startCountdown() {
-    var secondsLeft = 30;
-    if (startFunction) {
-        var showScore = document.getElementById("score");
-        countdown = setInterval(function() {
-            if (secondsLeft == 0) {
-                clearInterval(countdown);
-                question1.style.display = "none";
-                question2.style.display = "none";
-                question3.style.display = "none";
-                question4.style.display = "none";
-                question5.style.display = "none";
-                showScore.style.display = "block";
-            } else {
-                if (secondsLeft < 10) {
-                    secondsLeft = 0 + '' + secondsLeft;
-                    timer.style.display = "block";
-                    timer.textContent = secondsLeft;
-                    secondsLeft--;
-                }
-                secondsLeft -= 1;
-            }
-            
-        }, 1000);
-    }
-}
-
-
+// create the fuction to start the timer on start button click and show the first question
 function startFunction() {
+    correctAnswers = 0;
+    countdown = 30;
     var question1 = document.getElementById("question1");
+    var showScore = document.getElementById("score");
     question1.style.display = "block";
-}
+    timer.style.display = "block";
+    var expired = setInterval(function () {
+        countdown--;
+        document.getElementById("timer").innerHTML = countdown;
+        if (countdown <= 0) {
+            clearInterval(expired);
+            question1.style.display = "none";
+            question2.style.display = "none";
+            question3.style.display = "none";
+            question4.style.display = "none";
+            question5.style.display = "none";
+            showScore.style.display = "none";
 
-function questionTwo() {
+            timer.innerHTML = "expired!";
+        }
+        if (finalQuestionAnswered == true) {
+            clearInterval(expired);
+        }
+    }, 1000);
+    
+}
+// Evaluate the first answer, hide the first question and show the 2nd question
+function evaluateQuestionOne(answer) {
     var question2 = document.getElementById("question2");
     var question1 = document.getElementById("question1");
     question2.style.display = "block";
     question1.style.display = "none";
+    if (answer != 2) {
+        countdown = countdown -5;
+    }
+    if (answer == 2) {
+        correctAnswers++;
+    }
 }
 
-function questionThree() {
+// Evaluate the 2nd answer, hide the 2nd question and show the 3rd question
+function evaluateQuestionTwo(answer) {
     var question2 = document.getElementById("question2");
     var question1 = document.getElementById("question1");
     var question3 = document.getElementById("question3");
     question3.style.display = "block";
     question2.style.display = "none";
     question1.style.display = "none";
+    if (answer != 3) {
+        countdown = countdown -5;
+    }
+    if (answer == 3) {
+        correctAnswers++;
+    }
 }
 
-function questionFour() {
+// Evaluate the 3rd answer, hide the 3rd question and show the 4th question
+function evaluateQuestionThree(answer) {
     var question4 = document.getElementById("question4");
     var question2 = document.getElementById("question2");
     var question1 = document.getElementById("question1");
@@ -94,9 +73,16 @@ function questionFour() {
     question3.style.display = "none";
     question2.style.display = "none";
     question1.style.display = "none";
+    if (answer != 2) {
+        countdown = countdown -5;
+    }
+    if (answer == 2) {
+        correctAnswers++;
+    }
 }
 
-function questionFive() {
+// Evaluate the 4th answer, hide the 4th question and show the 5th question
+function evaluateQuestionFour(answer) {
     var question5 = document.getElementById("question5");
     var question4 = document.getElementById("question4");
     var question2 = document.getElementById("question2");
@@ -107,15 +93,32 @@ function questionFive() {
     question3.style.display = "none";
     question2.style.display = "none";
     question1.style.display = "none";
+    if (answer != 1) {
+        countdown = countdown -5;
+    }
+    if (answer == 1) {
+        correctAnswers++;
+    }
 }
 
-function finalQuestion() {
+// Evaluate the 5th answer, stop the timer, hide all questions prompt the initials input
+// Save the initials and score in local storage
+function evaluateQuestionFive(answer) {
+    if (answer == 1) {
+        correctAnswers++;
+    }
+    var initials = prompt("Enter your initials");
+    if (initials) {
+        localStorage.setItem("initials", initials);
+        displaySavedInitials();
+    }
+
+    finalQuestionAnswered = true;
     var question5 = document.getElementById("question5");
     var question4 = document.getElementById("question4");
     var question2 = document.getElementById("question2");
     var question1 = document.getElementById("question1");
     var question3 = document.getElementById("question3");
-    var scoreResults = document.getElementById("score");
     question5.style.display = "none"
     question4.style.display = "none";
     question3.style.display = "none";
@@ -123,15 +126,16 @@ function finalQuestion() {
     question1.style.display = "none";
     timer.style.display = "none";
     scoreResults.style.display = "block";
-    setTimeout(function() {
+}
 
-    })
-
+// create and append the list item with the latest saved initials and score to be displayed
+function displaySavedInitials(text) {
+    var savedInitials = localStorage.getItem("initials");
+    var scores = document.createElement("li");
+    var newInitials = document.createTextNode(savedInitials + " Correct" + " " + correctAnswers);
+    scores.appendChild(newInitials);
+    var list = document.getElementById("scores");
+    list.appendChild(scores);
+    // document.getElementById("score").appendChild(scores);
 };
 
-function saveText() {
-    var text = prompt("Please enter your initials");
-    if (text !== null && text !== "") {
-      localStorage.setItem("savedText", text);
-    }
-};
